@@ -19,13 +19,12 @@
   
     <div class="box">
     	@include('admin.messages_error')
-        <div class="box-body">
-        	
+        <div class="box-body">        	
         	<form name="frmAdd" method="post" action="{!! route('admin.lienket.postAdd') !!}" enctype="multipart/form-data">
         		<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
         		<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
           		<div class="col-md-6 col-xs-12">
-          			@if($_GET['type']!='thong-tin')
+          			@if($_GET['type']!='thong-tin' && $_GET['type']!='loi-the' && $_GET['type']!='the-manh-ivy')
 					<div class="form-group col-md-12 @if ($errors->first('fImages')!='') has-error @endif">
 						<label for="file">File ảnh</label>
 				     	<input type="file" id="file" name="fImages" >
@@ -36,6 +35,7 @@
 					</div>
 					@endif
 					<div class="clearfix"></div>
+					@if($_GET['type']!='the-manh-ivy')
 			    	<div class="form-group @if ($errors->first('txtName')!='') has-error @endif">
 				      	<label for="ten">Tên tiếng việt</label>
 				      	<input type="text" id="txtName" name="txtName" value=""  class="form-control" />
@@ -43,7 +43,8 @@
 				      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtName'); !!}</label>
 				      	@endif
 					</div>
-					@if($_GET['type']=='thong-tin' || $_GET['type']=='the-manh')
+					@endif
+					@if($_GET['type']=='thong-tin' || $_GET['type']=='the-manh' || $_GET['type']=='loi-the')
 					<div class="form-group @if ($errors->first('txtName')!='') has-error @endif">
 				      	<label for="ten">Tên tiếng nhật</label>
 				      	<input type="text" id="txtName" name="name_en" value=""  class="form-control" />
@@ -87,7 +88,7 @@
 		        		</div>
 		        	</div>
 					@endif
-					@if($_GET['type']=='thong-tin' || $_GET['type']=='the-manh')
+					@if($_GET['type']=='thong-tin' || $_GET['type']=='the-manh' || $_GET['type']=='loi-the' || $_GET['type']=='the-manh-ivy')
 					<div class="box box-info">
 		                <div class="box-header">
 		                  	<h3 class="box-title">Nội dung tiếng nhật</h3>

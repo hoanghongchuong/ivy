@@ -25,7 +25,7 @@
         		
       			<div class="row">
               		<div class="col-md-6 col-xs-12">
-              			@if($_GET['type']!='thong-tin')
+              			@if($_GET['type']!='thong-tin' && $_GET['type']!='loi-the' && $_GET['type']!='the-manh-ivy')
 						<div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
 							<div class="form-group">
 								<img src="{{ asset('upload/hinhanh/'.$data->photo) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" style="max-height: 200px;" class="img-responsive"  alt="NO PHOTO" />
@@ -40,6 +40,7 @@
 						</div>
 						@endif
 						<div class="clearfix"></div>
+						@if($_GET['type']!='the-manh-ivy')
 				    	<div class="form-group @if ($errors->first('txtName')!='') has-error @endif">
 					      	<label for="ten">Tên</label>
 					      	<input type="text" name="txtName" id="txtName" value="{{ $data->name }}"  class="form-control" />
@@ -47,7 +48,8 @@
 					      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtName'); !!}</label>
 					      	@endif
 						</div>
-						@if($_GET['type']=='thong-tin' || $_GET['type']=='the-manh')
+						@endif
+						@if($_GET['type']=='thong-tin' || $_GET['type']=='the-manh' || $_GET['type']=='loi-the')
 						<div class="form-group @if ($errors->first('txtName')!='') has-error @endif">
 					      	<label for="ten">Tên tiếng nhật</label>
 					      	<input type="text" id="txtName" name="name_en" value="{{ $data->name_en }}"  class="form-control" />
@@ -78,7 +80,7 @@
 						@if($_GET['type']!='thu-vien')
 						<div class="box box-info">
 			                <div class="box-header">
-			                  	<h3 class="box-title">Nội dung</h3>
+			                  	<h3 class="box-title">Nội dung tiếng việt</h3>
 			                  	<div class="pull-right box-tools">
 				                    <button class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
 				                    <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
@@ -89,7 +91,7 @@
 			        		</div>
 			        	</div>
 			        	@endif
-			        	@if($_GET['type']=='thong-tin' || $_GET['type']=='the-manh')
+			        	@if($_GET['type']=='thong-tin' || $_GET['type']=='the-manh' || $_GET['type']=='loi-the' || $_GET['type']=='the-manh-ivy')
 						<div class="box box-info">
 			                <div class="box-header">
 			                  	<h3 class="box-title">Nội dung tiếng nhật</h3>

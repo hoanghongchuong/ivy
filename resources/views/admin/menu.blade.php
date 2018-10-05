@@ -45,7 +45,6 @@
             <li><a href="backend/lienket?type=thong-tin"><i class="fa fa-circle-o"></i> <span>Thông tin công ty</span></a></li>          
           </ul>
         </li>
-
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Quản lý đào tạo</span>
@@ -58,13 +57,42 @@
         </li>
         <li><a href="backend/news?type=xuat-khau"><i class="fa fa-circle-o"></i> <span>Xuất khẩu lao động</span></a></li>
         <li><a href="backend/faq"><i class="fa fa-circle-o"></i> <span>FAQ</span></a></li>
-        <li><a href="backend/video"><i class="fa fa-circle-o"></i> <span>Video</span></a></li>
-                
-        <li><a href="backend/partner"><i class="fa fa-circle-o"></i> <span>Đối tác</span></a></li>       
+        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Ảnh và video </span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">            
+            <li><a href="backend/about/edit?type=video"><i class="fa fa-circle-o"></i> <span>Mô tả</span></a></li>
+            <li><a href="backend/video"><i class="fa fa-circle-o"></i> <span>Video</span></a></li>
+            <li><a href="backend/lienket?type=thu-vien"><i class="fa fa-circle-o"></i> <span>Thư viện ảnh</span></a></li>            
+          </ul>
+        </li>        
+        <!-- <li><a href="backend/partner"><i class="fa fa-circle-o"></i> <span>Đối tác</span></a></li>        -->
         <li><a href="backend/contact"><i class="fa fa-envelope"></i> <span>Quản lý liên hệ</span></a></li>
         <!-- <li><a href="backend/newsletter?type=newsletter"><i class="fa fa-circle-o"></i> <span>Đăng ký nhận tin</span></a></li> -->
-        <li><a href="backend/lienket?type=thu-vien"><i class="fa fa-circle-o"></i> <span>Thư viện ảnh</span></a></li>
         
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Lợi ích</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">            
+            <li><a href="backend/about/edit?type=loi-the"><i class="fa fa-circle-o"></i> <span>Mô tả</span></a></li>
+            <li><a href="backend/lienket?type=loi-the"><i class="fa fa-circle-o"></i> <span>Bài viết</span></a></li>            
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Thế mạnh của IvyHr </span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">            
+            <li><a href="backend/about/edit?type=the-manh-ivy"><i class="fa fa-circle-o"></i> <span>Mô tả</span></a></li>
+            <li><a href="backend/lienket?type=the-manh-ivy"><i class="fa fa-circle-o"></i> <span>Bài viết</span></a></li>            
+          </ul>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>

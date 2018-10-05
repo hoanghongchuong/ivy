@@ -81,7 +81,12 @@ class IndexController extends Controller {
 		$about = DB::table('about')->where('com', 'gioi-thieu')->first();		
 		$partners = DB::table('partner')->where('status',1)->orderBy('id','desc')->get();
 		$slogans = DB::table('slogan')->orderBy('id','asc')->get();
-		
+		$loiich = DB::table('about')->where('com', 'loi-the')->first();
+		$themanh = DB::table('about')->where('com', 'the-manh-ivy')->first();
+		$post_loiich = DB::table('lienket')->where('com', 'loi-the')->get();
+		$post_themanh = DB::table('lienket')->where('com', 'the-manh-ivy')->get();
+		$about_video = DB::table('about')->where('com', 'video')->first();
+		$gallery_home = DB::table('lienket')->where('com', 'thu-vien')->where('status',1)->take(3)->get();
 		// Cấu hình SEO
 		$setting = Cache::get('setting');
 		$slider = DB::table('slider')->get();
@@ -90,7 +95,7 @@ class IndexController extends Controller {
 		$description = $setting->description;
 		// End cấu hình SEO
 		$img_share = asset('upload/hinhanh/'.$setting->photo);
-		return view('templates.index_tpl', compact('banner_danhmuc','com','about','tintuc_moinhat','keyword','description','title','img_share','hot_news','slider','banner_sidebar','partners','slogans'));
+		return view('templates.index_tpl', compact('banner_danhmuc','com','about','tintuc_moinhat','keyword','description','title','img_share','hot_news','slider','partners','slogans','loiich','post_loiich','post_themanh','themanh','about_video','gallery_home'));
 	}
 	
 	public function getAbout()
@@ -369,7 +374,7 @@ class IndexController extends Controller {
 	}
 	public function gallery()
 	{		
-		$data = DB::table('lienket')->where('com', 'thu-vien')->where('status', 1)->paginate(30);
+		$data = DB::table('lienket')->where('com', 'thu-vien')->paginate(30);
 		$com='gallery';
 		// Cấu hình SEO
 		$title = "Gallery";

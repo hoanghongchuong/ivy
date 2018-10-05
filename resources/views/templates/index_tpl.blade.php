@@ -3,7 +3,7 @@
 
 <?php
 $setting = Cache::get('setting');
-$lang = Cache::get('lang');
+$lang = Session::get('locale');
 $cateProducts = Cache::get('cateProducts');
 $sliders = DB::table('slider')->where('com','gioi-thieu')->where('status',1)->get();
 ?>
@@ -98,79 +98,31 @@ $sliders = DB::table('slider')->where('com','gioi-thieu')->where('status',1)->ge
 	<!-- Tại sao chọn chúng tôi -->
 	<section class="why">
 		<div class="container">
-			<h2 class="s30 t1 text-center why-tit wow fadeInUp" data-wow-offset="150">なぜ私たちを選ぶ</h2>
+			<h2 class="s30 t1 text-center why-tit wow fadeInUp" data-wow-offset="150">
+				@if($lang =='vi')
+				{{$loiich->name}}
+				@elseif($lang =='jp')
+				{{$loiich->name_en}}
+				@endif
+			</h2>
 			<div class="w-lg-80 t2 s16 text-center m-auto why-sum wow fadeInUp" data-wow-offset="150">
-				<h3 class="">レイアウトを見ると、読者がページの読みやすいコンテンツに注意をそらすのは、長い間確立された事実です。の使用のポイントは、</h3>
+				<h3 class="">@if($lang =='vi') {!! $loiich->content !!} @elseif($lang =='jp') {!!$loiich->content_en!!} @endif</h3>
 			</div>
-
-			<div class="why-wrap" style="background:url(./images/map.png) no-repeat center center; background-size: contain;">
+			<div class="why-wrap" style="background:url({{ asset('public/images/map.png')  }}) no-repeat center center; background-size: contain;">
 				<div class="row">
+					@foreach($post_loiich as $k=>$post)
 					<div class="col-sm-6 wow fadeInUp" data-wow-offset="150">
 						<section class="why-item">
 							<h3 class="s18 why-item-tit">
-								<span class="why-counter">1</span>
-								<span class="t1">豊富な労働力</span>
+								<span class="why-counter">{{$k+1}}</span>
+								<span class="t1">@if($lang =='vi'){{$post->name}} @elseif($lang =='jp') {{$post->name_en}} @endif</span>
 							</h3>
 							<div class="s16 why-item-content">
-								<p>ベトナム人口の3分の1は35歳以下であり、若年労働者の豊富さがベトナムの労働力の強みとなっています。そしてベトナム国内では、毎年約90万人の高校生が卒業しており大学、短期大学、専門学校から20万人が卒業しています。この数字が示すとおり労働力不足の日本に人財補給することが可能です。</p>
+								<p>@if($lang =='vi') {!! $post->content !!}  @elseif($lang =='jp') {!! $post->content_en !!} @endif</p>
 							</div>
 						</section>
 					</div>
-					<div class="col-sm-6 wow fadeInUp wow fadeInUp" data-wow-offset="150">
-						<section class="why-item">
-							<h3 class="s18 why-item-tit">
-								<span class="why-counter">2</span>
-								<span class="t1">豊富な労働力</span>
-							</h3>
-							<div class="s16 why-item-content">
-								<p>ベトナム人口の3分の1は35歳以下であり、若年労働者の豊富さがベトナムの労働力の強みとなっています。そしてベトナム国内では、毎年約90万人の高校生が卒業しており大学、短期大学、専門学校から20万人が卒業しています。この数字が示すとおり労働力不足の日本に人財補給することが可能です。</p>
-							</div>
-						</section>
-					</div>
-					<div class="col-sm-6 wow fadeInUp wow fadeInUp" data-wow-offset="150">
-						<section class="why-item">
-							<h3 class="s18 why-item-tit">
-								<span class="why-counter">3</span>
-								<span class="t1">豊富な労働力</span>
-							</h3>
-							<div class="s16 why-item-content" data-wow-offset="150">
-								<p>ベ ト ナ ム 人 口 の 3 分 の 1は35歳以下であり、若年労働者の豊富さがベトナムの労働力の強みとなっています。そしてベトナム国内では、毎年約90万人の高校生が卒業しており大学、短期大学、専門学校から20万人が卒業しています。この数字が示すとおり労働力不足の日本に人財補給することが可能です。</p>
-							</div>
-						</section>
-					</div>
-					<div class="col-sm-6 wow fadeInUp wow fadeInUp" data-wow-offset="150">
-						<section class="why-item">
-							<h3 class="s18 why-item-tit">
-								<span class="why-counter">4</span>
-								<span class="t1">豊富な労働力</span>
-							</h3>
-							<div class="s16 why-item-content">
-								<p>ベトナム人口の3分の1は35歳以下であり、若年労働者の豊富さがベトナムの労働力の強みとなっています。そしてベトナム国内では、毎年約90万人の高校生が卒業しており大学、短期大学、専門学校から20万人が卒業しています。この数字が示すとおり労働力不足の日本に人財補給することが可能です。</p>
-							</div>
-						</section>
-					</div>
-					<div class="col-sm-6 wow fadeInUp" data-wow-offset="150">
-						<section class="why-item">
-							<h3 class="s18 why-item-tit">
-								<span class="why-counter">5</span>
-								<span class="t1">豊富な労働力</span>
-							</h3>
-							<div class="s16 why-item-content wow fadeInUp" data-wow-offset="150">
-								<p>ベトナム人口の3分の1は35歳以下であり、若年労働者の豊富さがベトナムの労働力の強みとなっています。そしてベトナム国内では、毎年約90万人の高校生が卒業しており大学、短期大学、専門学校から20万人が卒業しています。この数字が示すとおり労働力不足の日本に人財補給することが可能です。</p>
-							</div>
-						</section>
-					</div>
-					<div class="col-sm-6 wow fadeInUp" data-wow-offset="150">
-						<section class="why-item">
-							<h3 class="s18 why-item-tit">
-								<span class="why-counter">6</span>
-								<span class="t1">豊富な労働力</span>
-							</h3>
-							<div class="s16 why-item-content wow fadeInUp" data-wow-offset="150">
-								<p>ベトナム人口の3分の1は35歳以下であり、若年労働者の豊富さがベトナムの労働力の強みとなっています。そしてベトナム国内では、毎年約90万人の高校生が卒業しており大学、短期大学、専門学校から20万人が卒業しています。この数字が示すとおり労働力不足の日本に人財補給することが可能です。</p>
-							</div>
-						</section>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -254,57 +206,37 @@ $sliders = DB::table('slider')->where('com','gioi-thieu')->where('status',1)->ge
 	<!-- hợp tác -->
 	<section class="ht" style="background: url(./images/bgj.png) no-repeat center center; background-attachment: fixed;background-size: cover;">
 		<div class="container">
-			<h2 class="s30 t1 text-center ht-tit wow fadeInUp" data-wow-offset="150">IvyHRと協力して、最も著 </br>名な研修生を受け入れる</h2>
+			<h2 class="s30 t1 text-center ht-tit wow fadeInUp" data-wow-offset="150">@if($lang == 'vi'){{ $themanh->name }} @elseif($lang =='jp') {{$themanh->name_en}} @endif</h2>
 			<div class="w-lg-80 t2 s16 text-center m-auto qt-sum wow fadeInUp" data-wow-offset="150">
-				<h3 class="">外国人技能実習制度は、日本企業が技能実習生を受入れ、技能実習生へ技能などの移転を図り、その国の経済発展を担う人材育成を目的とした国際協力、国際貢献のための制度です</h3>
+				<h3 class="">@if($lang == 'vi'){!! $themanh->content !!} @elseif($lang =='jp') {!!$themanh->content_en!!} @endif</h3>
 			</div>
 
 			<div class="ht-wrap">
 				<div class="row justify-content-around">
+					@foreach($post_themanh as $item)
 					<div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-offset="150">
 						<div class="ht-item">
-							<p>豊かな労働力</p>
-							<p>日本企業・監理団体の需要を満たすために、IVY </p>
-							<p>HRの募集部はベトナムの全土から最良な労働力を募集しております。</p>
+							@if($lang =='vi') {!! $item->content !!} @elseif($lang =='jp') {!! $item->content_en !!} @endif
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-offset="150">
-						<div class="ht-item">
-							<p>24/7 カスタマーサポート</p>
-							<p>多くの経験豊かな日本駐在員を採用しており、昼夜を問わずサポートする事ができます。</p>
-							<p>実習生に関する問題に迅速対応</p>
-							<p>人財受け入れコンサルティング</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-offset="150">
-						<div class="ht-item">
-							<p>実習生を全面的に研修</p>
-							<p>面接合格後、実習生は、IVY HRのカリキュラムに基づく全面的な教育を受けます。</p>
-							<p>日本語教育</p>
-							<p>技能訓練</p>
-							<p>ビジネスマナー研修</p>
-							<p>課外活動</p>
-							<p>これらの訓練により、実習生は日本語をよく話し、知識や技能を伸長させ、日本企業での仕事に素早く順応できるので、企業に大きく貢献できます。</p>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- ảnh - video -->
-	<section class="gallery" style="background: url(./images/videobgj.jpg) top center;">
+	<section class="gallery" style="background: url({{asset('public/images/videobgj.jpg')}}) top center;">
 		<div class="container">
-			<h2 class="s30 t1 text-center td-tit wow fadeInUp" data-wow-offset="150">フォトビデオ</h2>
+			<h2 class="s30 t1 text-center td-tit wow fadeInUp" data-wow-offset="150">@if($lang =='vi') {{ $about_video->name }} @elseif($lang =='jp') {{ $about_video->name_en }} @endif</h2>
 			<div class="w-lg-80 t2 s16 text-center m-auto qt-sum wow fadeInUp" data-wow-offset="150">
-				<h3 class="">レイアウトを見ると、読者がページの読みやすいコンテンツに注意をそらすのは、長い間確立された事実です。 の使用のポイントは、</h3>
+				<h3 class="">@if($lang =='vi') {!! $about_video->content !!} @elseif($lang =='jp') {!! $about_video->content_en !!} @endif</h3>
 			</div>
-
 			<div class="d-flex flex-wrap justify-content-center gal-wrap">
-				<div class="pic-item wow fadeInUp" data-wow-offset="150"><a href="images/1.jpg" data-fancybox="pic1" data-caption="Xuất khẩu lao động" class=""><img src="images/1.jpg" alt=""></a></div>
-				<div class="pic-item wow fadeInUp" data-wow-offset="150"><a href="images/2.jpg" data-fancybox="pic1" data-caption="Xuất khẩu lao động" class=""><img src="images/2.jpg" alt=""></a></div>
-				<div class="pic-item wow fadeInUp" data-wow-offset="150"><a href="images/3.jpg" data-fancybox="pic1" data-caption="Xuất khẩu lao động" class=""><img src="images/3.jpg" alt=""></a></div>
+				@foreach($gallery_home as $g)
+				<div class="pic-item wow fadeInUp" data-wow-offset="150"><a href="{{ asset('upload/hinhanh/'.$g->photo) }}" data-fancybox="pic1" data-caption="Xuất khẩu lao động" class=""><img src="{{ asset('upload/hinhanh/'.$g->photo) }}" alt=""></a></div>
+				@endforeach
 			</div>
-			<div class="text-center wow fadeInUp" data-wow-offset="150"><a href="anh.html" title="" class="btn jbtn">もっと読む</a></div>
+			<div class="text-center wow fadeInUp" data-wow-offset="150"><a href="{{url('gallery')}}" title="" class="btn jbtn">もっと読む</a></div>
 		</div>
 	</section>
 </main>

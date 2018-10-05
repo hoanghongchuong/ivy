@@ -48,10 +48,13 @@
               <tr>
                 <th style="width: 20px;"><input type="checkbox" name="chonhet" class="minimal" id="chonhet" /></th>
                 <th class="text-center with_dieuhuong">Stt</th>
-
+                @if($_GET['type']!='the-manh-ivy')
                 <th>Tên bài viết</th>
-                
-                @if($_GET['type']!='thong-tin')
+                @endif
+                @if($_GET['type']=='the-manh-ivy')
+                <th>Nội dung</th>
+                @endif
+                @if($_GET['type']!='thong-tin' && $_GET['type']!='loi-the' && $_GET['type']!='the-manh-ivy')
                 <th>Hình ảnh</th>
                 @endif
                 <th class="text-center with_dieuhuong">Hoạt động</th>
@@ -64,9 +67,13 @@
               <tr>
                 <td><input type="checkbox" name="chon" id="chon" value="{{$item->id}}" class="chon" /></td>
                 <td class="text-center with_dieuhuong">{{$k+1}}</td>
-
+                @if($_GET['type']!='the-manh-ivy')
                 <td>{{$item->name}}</td>
-                @if($_GET['type']!='thong-tin')
+                @endif
+                @if($_GET['type']=='the-manh-ivy')
+                  <td>{!! $item->content !!}</td>
+                @endif
+                @if($_GET['type']!='thong-tin' && $_GET['type']!='loi-the' && $_GET['type']!='the-manh-ivy')
                 <td><img src="{{ asset('upload/hinhanh/'.$item->photo) }}" onerror="this.src='{{ asset('public/admin_assets/images/no-image.jpg') }}';" class="img_product"  alt="NO PHOTO" /></td>
                 @endif
                 <td class="text-center with_dieuhuong">
