@@ -312,6 +312,7 @@ Route::get('thu-ngo', 'IndexController@thuNgo');
 Route::get('thong-tin-cong-ty', 'IndexController@thongTin');
 Route::get('the-manh', 'IndexController@theManh');
 Route::get('xuat-khau-lao-dong', 'IndexController@xuatKhau');
+Route::get('thuc-tap', 'IndexController@xuatKhau');
 Route::get('the-manh', 'IndexController@themanh');
 
 Route::get('ajax/province/{id}',['as'=>'loadDistrictByProvince', 'uses'=>'IndexController@loadDistrictByProvince']);

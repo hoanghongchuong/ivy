@@ -604,7 +604,11 @@ class IndexController extends Controller {
 	public function xuatKhau()
 	{
 		$lang = Session::get('locale');
-		$data = DB::table('news')->where('com', 'xuat-khau')->get();
+		if($lang =='vi'){
+			$data = DB::table('news')->where('com', 'xuat-khau')->get();
+		}elseif($lang=='jp'){
+			$data = DB::table('news')->where('com', 'thuc-tap')->get();
+		}
 		$com = 'xuat-khau';
 		if($lang == 'vi'){
         	$title = "Xuất khẩu lao động";

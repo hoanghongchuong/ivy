@@ -36,7 +36,7 @@
 	                  	<div class="tab-pane active" id="tab_1">
 	                  		<div class="row">
 		                  		<div class="col-md-6 col-xs-12">
-		                  			@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau')
+		                  			@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap')
 									<div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
 										<div class="form-group">
 											<img src="{{ asset('upload/news/'.$data->photo) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
@@ -76,7 +76,7 @@
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
 									</div>
-									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau')
+									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap')
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="txtDesc" rows="5" class="form-control">{{ $data->mota }}</textarea>
@@ -140,7 +140,7 @@
 						        			@endforeach
 						        		</div>
 						        	@endif
-						        	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau')
+						        	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap')
 						        	<div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
 										<div class="form-group">
 											<img src="{{ asset('upload/news/'.$data->photo_en) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
@@ -163,7 +163,7 @@
 								      	<input type="text" name="txtAlias_en" id="txtAlias_en" value="{{$data->alias_en}}"  class="form-control" />
 									</div>
 			                    		
-			                    	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau')
+			                    	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap')
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="mota_en" rows="5" class="form-control">{{ $data->mota_en }}</textarea>

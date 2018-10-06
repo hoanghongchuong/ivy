@@ -56,6 +56,19 @@
           </ul>
         </li>
         <li><a href="backend/news?type=xuat-khau"><i class="fa fa-circle-o"></i> <span>Xuất khẩu lao động</span></a></li>
+        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Chế độ thực tập </span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">            
+            <li><a href="backend/about/edit?type=thuc-tap"><i class="fa fa-circle-o"></i> <span>Mô tả</span></a></li>
+            <li>
+              <a href="backend/news?type=thuc-tap"><i class="fa fa-circle-o"></i> <span>Chế độ thực tập</span></a>
+            </li>            
+          </ul>
+        </li> 
         <li><a href="backend/faq"><i class="fa fa-circle-o"></i> <span>FAQ</span></a></li>
         
         <li class="treeview">
@@ -93,6 +106,17 @@
             <li><a href="backend/lienket?type=the-manh-ivy"><i class="fa fa-circle-o"></i> <span>Bài viết</span></a></li>            
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Quy trình tiếp nhận </span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">            
+            <li><a href="backend/about/edit?type=quy-trinh"><i class="fa fa-circle-o"></i> <span>Mô tả</span></a></li>
+            <li><a href="backend/newscate?type=quy-trinh"><i class="fa fa-circle-o"></i> <span>Danh mục</span></a></li>
+            <li><a href="backend/news?type=quy-trinh"><i class="fa fa-circle-o"></i> <span>Danh sách</span></a></li>            
+          </ul>
+        </li> 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>

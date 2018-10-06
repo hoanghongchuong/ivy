@@ -124,7 +124,7 @@
                             <li><a href="{{url('the-manh')}}" title="">強さ</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{url('xuat-khau-lao-dong')}}" title="">外国人技能実習制度とは</a></li>
+                    <li><a href="{{url('thuc-tap')}}" title="">外国人技能実習制度とは</a></li>
                     
                     <li><a href="javascript:0;" title="">実習生研修活動</a>
                         <ul class="">

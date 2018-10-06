@@ -44,7 +44,7 @@
 						        			@endforeach
 						        		</div>
 						        	@endif
-						        	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau')
+						        	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')
 									<div class="form-group col-md-12 @if ($errors->first('fImages')!='') has-error @endif">
 										<label for="file">File ảnh</label>
 								     	<input type="file" id="file" name="fImages" >
@@ -55,7 +55,7 @@
 									</div>
 									@endif
 									<div class="clearfix"></div>
-									@if($_GET['type']=='tin-tuc' || $_GET['type']=='tuyen-dung' || $_GET['type']=='dao-tao')
+									@if($_GET['type']=='tin-tuc' || $_GET['type']=='tuyen-dung' || $_GET['type']=='dao-tao' || $_GET['type']=='quy-trinh')
 									<div class="form-group">
 								      	<label for="ten">Danh mục cha</label>
 								      	<select name="txtNewsCate" class="form-control">
@@ -72,14 +72,14 @@
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtName'); !!}</label>
 								      	@endif
 									</div>									
-									<div class="form-group @if($_GET['type']=='dao-tao' || $_GET['type']=='xuat-khau') hidden @endif  @if($errors->first('txtAlias')!='') has-error @endif">
+									<div class="form-group @if($_GET['type']=='dao-tao' || $_GET['type']=='xuat-khau' || $_GET['type']=='thuc-tap' || $_GET['type']=='quy-trinh') hidden @endif  @if($errors->first('txtAlias')!='') has-error @endif">
 								      	<label for="alias">Đường dẫn tĩnh</label>
 								      	<input type="text" name="txtAlias" id="txtAlias" value=""  class="form-control" />
 								      	@if ($errors->first('txtAlias')!='')
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
 									</div>	
-									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau')								
+									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')							
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="txtDesc" rows="5" class="form-control"></textarea>
@@ -100,6 +100,7 @@
 									@endif
 								</div> -->
 							</div>
+							@if($_GET['type']!='quy-trinh')
 							<div class="row">
 								<div class="col-md-12">
 									<div class="box box-info">
@@ -120,8 +121,8 @@
 								    	</label>
 								    </div>
 								</div>
-
 							</div>
+							@endif
 							<div class="clearfix"></div>
 
 	                  	</div><!-- /.tab-pane -->
@@ -135,7 +136,7 @@
 						        			@endforeach
 						        		</div>
 						        	@endif
-									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau')									
+									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')									
 									<div class="form-group col-md-12 @if ($errors->first('fImages')!='') has-error @endif">
 										<label for="file">File ảnh</label>
 								     	<input type="file" id="file" name="fImages_en" >
@@ -153,7 +154,7 @@
 									      	<label for="alias">Alias</label>
 									      	<input type="text" name="txtAlias_en" id="txtAlias_en" value=""  class="form-control" />
 										</div>			                    		
-			                    	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau')
+			                    	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="mota_en" rows="5" class="form-control"></textarea>
@@ -163,6 +164,7 @@
 								</div>
 								
 							</div>
+							@if($_GET['type']!='quy-trinh')
 							<div class="row">
 								<div class="col-md-12">
 									<div class="box box-info">
@@ -184,6 +186,7 @@
 								    </div>
 								</div>
 							</div>
+							@endif
 	                    	<div class="clearfix"></div>
 	                	</div><!-- /.tab-pane -->
 	                	<div class="tab-pane" id="tab_4">

@@ -60,15 +60,13 @@
 								      	<label for="ten">Tên(tiếng nhật)</label>
 								      	<input type="text" name="name_en" id="" value="{{ @$data->name_en }}"  class="form-control" />
 									</div>
-									
-									<!-- <div class="form-group @if ($errors->first('txtAlias')!='') has-error @endif">
-								      	<label for="alias">Đường dẫn tĩnh</label>
-								      	<input type="text" name="txtAlias" id="txtAlias" value="{{ @$data->alias }}"  class="form-control" />
-								      	@if ($errors->first('txtAlias')!='')
-								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
-								      	@endif
-									</div> -->
-									
+									@if($_GET['type']=='thuc-tap')
+									<div class="form-group">
+								      	<label for="alias">Link</label>
+								      	<input type="text" name="txtAlias" id="" value="{{ @$data->alias }}"  class="form-control" />
+								      	
+									</div>
+									@endif
 								</div>
 								<input type="hidden" name="txtCom" value="{{ old('txtCom', isset($data) ? @$data->com : null) }}">
 								<div class="clearfix"></div>

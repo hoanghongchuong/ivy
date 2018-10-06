@@ -6,6 +6,10 @@ $setting = Cache::get('setting');
 $lang = Session::get('locale');
 $cateProducts = Cache::get('cateProducts');
 $sliders = DB::table('slider')->where('com','gioi-thieu')->where('status',1)->get();
+$cate_quytrinh = DB::table('news_categories')->where('com','quy-trinh')->get();
+$about_quytrinh = DB::table('about')->where('com','quy-trinh')->first();
+$about_thuctap = DB::table('about')->where('com','thuc-tap')->first();
+
 ?>
 <style>
 	.td {
@@ -130,81 +134,65 @@ $sliders = DB::table('slider')->where('com','gioi-thieu')->where('status',1)->ge
 	<!-- td Thực tập sinh -->
 	<section class="td">
 		<div class="container">
-			<h2 class="s30 t1 text-center td-tit wow fadeInUp" data-wow-offset="150">チーフチンフシン</h2>
+			<h2 class="s30 t1 text-center td-tit wow fadeInUp" data-wow-offset="150">@if($lang =='vi'){{ $about_thuctap->name }} @elseif($lang =='jp') {{ $about_thuctap->name_en }} @endif</h2>
 			<div class="td-content wow fadeInUp" data-wow-offset="150">
-				<p>レイアウトを見ると、読者がページの読みやすいコンテンツに注意をそらすのは、長い間確立された事実です。 の使用のポイントは、「ここのコンテンツ、ここのコンテンツ」を使用するのではなく、読みやすい英語のように見える、文字の正規分布が多少あるということです。</p>
-				<p>レイアウトを見ると、読者がページの読みやすいコンテンツに注意をそらすのは、長い間確立された事実です。 の使用のポイントは、「ここのコンテンツ、ここのコンテンツ」を使用するのではなく、読みやすい英語のように見える、文字の正規分布が多少あるということです。多くのデスクトップパブリッシングパッケージやWebページエディタでは、デフォルトのモデルテキストとして</p>
-				<p>レイアウトを見ると、読者がページの読みやすいコンテンツに注意をそらすのは、長い間確立された事実です。 の使用のポイントは、「ここのコンテンツ、ここのコンテンツ」を使用するのではなく、</p>
+				@if($lang =='vi') {!! $about_thuctap->content !!}  @elseif($lang =='jp') {!! $about_thuctap->content_en !!} @endif
 			</div>
-			<div class="text-center"><a href="#" title="" class="btn jbtn">もっと読む</a></div>
+			<div class="text-center"><a href="{{$about_thuctap->alias}}" title="" class="btn jbtn">{{ __('label.docthem') }}</a></div>
 		</div>
 	</section>
 	<!-- quy trình -->
-	<section class="qt vqt">
-		<div class="container">
-			<h2 class="s30 t1 text-center td-tit wow fadeInUp wow fadeInUp" data-wow-offset="150">間違っている</h2>
+	<section class="qt @if($lang =='vi') vqt @endif">
+		<div class="container">			
+			<h2 class="s30 t1 text-center td-tit wow fadeInUp wow fadeInUp" data-wow-offset="150">{{$about_quytrinh->name}}</h2>
 			<div class="w-lg-80 t2 s16 text-center m-auto qt-sum wow fadeInUp wow fadeInUp" data-wow-offset="150">
-				<h3 class="">Hệ thống đào tạo thực hành kỹ năng ngoại giao là một hệ thống hợp tác quốc tế và đóng góp quốc tế cho các công ty Nhật Bản chấp nhận học viên thực tập kỹ thuật, chuyển giao kỹ năng cho thực tập sinh kỹ thuật và phát triển nguồn nhân lực chịu trách nhiệm phát triển kinh tế của quốc gia đó</h3>
+				<h3 class="">{!! $about_quytrinh->content !!}</h3>
 			</div>
+			@if($lang =='vi')
 			<div class="s16 qt-wrap">
+				@foreach($cate_quytrinh as $cateq)
+				<?php $posts = DB::table('news')->where('com','quy-trinh')->where('cate_id', $cateq->id)->get(); ?>
 				<div class="qt-swrap">
 					<div class="row justify-content-center">
 						<div class="col-sm-2 col-3 d-flex align-items-center">
 							<h3 class="text-center qt-item-tit wow fadeInUp" data-wow-offset="150">
-								1 tháng
+								{{$cateq->name}}
 							</h3>
 						</div>
 						<div class="col-sm-10 col-9">
 							<div class="qt-items">
-								<h4 class="qt-item wow fadeInUp wow fadeInUp" data-wow-offset="150">Tư vấn chấp nhận thực tập kỹ thuật</h4>
-								<h4 class="qt-item wow fadeInUp wow fadeInUp" data-wow-offset="150">Nộp đơn xin chấp nhận</h4>
-								<h4 class="qt-item wow fadeInUp wow fadeInUp" data-wow-offset="150">Phỏng vấn</h4>
-								<h4 class="qt-item wow fadeInUp wow fadeInUp" data-wow-offset="150">Hợp đồng lao động</h4>
+								@foreach($posts as $item)
+								<h4 class="qt-item wow fadeInUp wow fadeInUp" data-wow-offset="150">{{$item->name}}</h4>
+								@endforeach
 							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="qt-swrap">
-					<div class="row">
-						<div class="col-sm-2 col-3 d-flex align-items-center">
-							<h3 class="text-center qt-item-tit wow fadeInUp" data-wow-offset="150">
-								4 tháng
-							</h3>
+				</div>				
+				@endforeach
+			</div>
+			@elseif($lang =='jp')
+			<div class="s16 qt-wrap">
+				<div class="row justify-content-center">
+					@foreach($cate_quytrinh as $cateq)
+					<?php $posts = DB::table('news')->where('com','quy-trinh')->where('cate_id', $cateq->id)->get(); ?>
+					<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="qt-items">
+							@foreach($posts as $item)
+								<h4 class="qt-item wow fadeInUp wow fadeInUp" data-wow-offset="150">{{$item->name_en}}</h4>
+							@endforeach
 						</div>
-						<div class="col-sm-10 col-9">
-							<div class="qt-items">
-								<h4 class="qt-item wow fadeInUp" data-wow-offset="150">Hợp đồng lao động</h4>
-								<h4 class="qt-item wow fadeInUp" data-wow-offset="150">Đơn xin chứng nhận kế hoạch đào tạo thực tập kỹ thuật</h4>
-								<h4 class="qt-item wow fadeInUp" data-wow-offset="150">Áp dụng cho Giấy chứng nhận đủ điều kiện</h4>
-								<h4 class="qt-item wow fadeInUp" data-wow-offset="150">Mua lại giấy chứng nhận đủ điều kiện</h4>
-							</div>
-						</div>
+						<h3 class="text-center qt-item-tit wow fadeInUp" data-wow-offset="150">
+							{{$cateq->name_en}}
+						</h3>
 					</div>
-				</div>
-					
-				<div class="qt-swrap">
-					<div class="row">
-						<div class="col-sm-2 col-3 d-flex align-items-center">
-							<h3 class="text-center qt-item-tit wow fadeInUp" data-wow-offset="150">
-								3 tháng
-							</h3>
-						</div>
-						<div class="col-sm-10 col-9">
-							<div class="qt-items">
-								<h4 class="qt-item wow fadeInUp" data-wow-offset="150">Thực tập sinh kỹ thuật</h4>
-								<h4 class="qt-item wow fadeInUp" data-wow-offset="150">Đánh giá hiệu suất kỹ năng thực tế</h4>
-								<h4 class="qt-item wow fadeInUp" data-wow-offset="150">Chuyển sang đánh giá thực tế · kỹ năng cư trú</h4>
-								<h4 class="qt-item wow fadeInUp" data-wow-offset="150">Học viên thực tập kỹ thuật trở về nhà</h4>
-							</div>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
+			@endif
 		</div>
 	</section>
 	<!-- hợp tác -->
-	<section class="ht" style="background: url(./images/bgj.png) no-repeat center center; background-attachment: fixed;background-size: cover;">
+	<section class="ht" style="background: url({{ asset('public/images/bgj.png')  }}) no-repeat center center; background-attachment: fixed;background-size: cover;">
 		<div class="container">
 			<h2 class="s30 t1 text-center ht-tit wow fadeInUp" data-wow-offset="150">@if($lang == 'vi'){{ $themanh->name }} @elseif($lang =='jp') {{$themanh->name_en}} @endif</h2>
 			<div class="w-lg-80 t2 s16 text-center m-auto qt-sum wow fadeInUp" data-wow-offset="150">

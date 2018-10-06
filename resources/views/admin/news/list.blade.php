@@ -49,11 +49,11 @@
               <tr>
                 <th style="width: 20px;"><input type="checkbox" name="chonhet" class="minimal" id="chonhet" /></th>
                 <th class="text-center with_dieuhuong">Stt</th>
-                @if($_GET['type']=='tin-tuc' || $_GET['type']=='tuyen-dung' || $_GET['type']=='dao-tao')
+                @if($_GET['type']=='tin-tuc' || $_GET['type']=='tuyen-dung' || $_GET['type']=='dao-tao' || $_GET['type']=='quy-trinh')
                 <th>Danh mục cha</th>
                 @endif
                 <th>Tên bài viết</th>
-                @if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau')
+                @if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')
                 <th>Hình ảnh</th>
                 @endif
                 <!-- <th class="text-center with_dieuhuong">Hoạt động</th> -->
@@ -66,7 +66,7 @@
               <tr>
                 <td><input type="checkbox" name="chon" id="chon" value="{{$item->id}}" class="chon" /></td>
                 <td class="text-center with_dieuhuong">{{$k+1}}</td>
-                @if($_GET['type']=='tin-tuc' || $_GET['type']=='tuyen-dung' || $_GET['type']=='dao-tao')
+                @if($_GET['type']=='tin-tuc' || $_GET['type']=='tuyen-dung' || $_GET['type']=='dao-tao' || $_GET['type']=='quy-trinh')
                 <td>
                   <?php  $parent = DB::table('news_categories')->where('id', $item->cate_id)->where('com', @$_GET['type'])->first();
                   ?>
@@ -80,7 +80,7 @@
                 <td>
                   {{$item->name}}<br>                  
                 </td>
-                @if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau')                
+                @if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')                
                 <td><img src="{{ asset('upload/news/'.$item->photo) }}" onerror="this.src='{{ asset('public/admin_assets/images/no-image.jpg') }}';" class="img_product"  alt="NO PHOTO" /></td>
                 @endif
                 <!-- <td class="text-center with_dieuhuong">

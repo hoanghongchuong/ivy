@@ -149,7 +149,8 @@ class AboutController extends Controller
                 }
             }
             $data->name = $request->txtName;
-            $data->alias = changeTitle($request->txtName);
+            $data->alias = $request->txtAlias;
+            // $data->alias = changeTitle($request->txtName);
             $data->name_en = $request->name_en;
             $data->mota = $request->txtDesc;
             $data->mota_en = $request->mota_en;
