@@ -1,11 +1,11 @@
 @extends('index')
 @section('content')
 <?php
-    $setting = Cache::get('setting');
-    $aboutService = DB::table('about')->where('com','dich-vu')->first();
-    $lang = Cache::get('lang');
-    $biendich = Cache::get('biendich');
-    $banner = DB::table('banner_content')->where('position', 5)->first();
+$setting = Cache::get('setting');
+$aboutService = DB::table('about')->where('com', 'dich-vu')->first();
+$lang = Cache::get('lang');
+$biendich = Cache::get('biendich');
+$banner = DB::table('banner_content')->where('position', 4)->first();
 ?>
 <section class="banner">
     <img src="{{ asset('upload/banner/'.$banner->image)}}" alt="" title="">
@@ -32,7 +32,7 @@
             </div>
         </div>
         @endforeach
-        
+
     </div>
 </section>
 

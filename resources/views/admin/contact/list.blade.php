@@ -81,7 +81,7 @@
                                         </th>
                                         <!-- <th>Tên bài viết</th> -->
                                         <th>Họ tên</th>
-                                        <!-- <th>Số điện thoại</th> -->
+                                        <th>Số điện thoại</th>
                                         <th>Email</th>
                                         <th>Nội dung</th>
                                         <!-- <th>Ngày gửi</th> -->
@@ -104,7 +104,7 @@
                                             {{$k+1}}
                                         </td>
                                         <td>{{$item->name}}</td>
-                                        <!-- <td>{{$item->phone}}</td> -->
+                                        <td>{{$item->phone}}</td>
                                         <td>{{$item->email}}</td>
                                         <td>{{$item->content}}</td>
                                         <!-- <td><?=date('d/m/Y', strtotime($item->created_at))?></td> -->
@@ -169,7 +169,7 @@
                 if (res == 1) {
                     btn.addClass('btn-success').removeClass('btn-warning');
                     btn.text('Đã xử lý');
-                } 
+                }
                 if (res == 0) {
                     btn.addClass('btn-warning').removeClass('btn-success');
                     btn.text('Chưa xử lý');

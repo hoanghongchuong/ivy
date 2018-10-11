@@ -19,6 +19,7 @@
                        {{ @$tintuc_cate->name_en }}
                     @endif
                 </h1>
+                 <!-- {{ $tintuc_cate['name_'.$lang] }} -->
             </div>
             <ul class="list-unstyled s14 bread">
                 <li><a href="{{url('')}}" title="">{{ __('label.home') }}</a></li>

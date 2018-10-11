@@ -1,14 +1,15 @@
 @extends('index')
 @section('content')
 <?php
-    $setting = Cache::get('setting');
-    $about = DB::table('about')->where('com', 'gioi-thieu')->first();
+$setting = Cache::get('setting');
+$about = DB::table('about')->where('com', 'gioi-thieu')->first();
+$banner = DB::table('banner_content')->where('position', 8)->first();
 ?>
 <main class="">
 	<section class="banner">
 		<div class="container">
 			<div class="banner-wrap">
-				<img src="images/5.jpg" alt="">
+				<img src="{{ asset('upload/banner/'.$banner->image)}}" alt="">
 				<h1 class="medium s30 text-center text-white text-uppercase banner-tit">FAQ</h1>
 			</div>
 			<ul class="list-unstyled s14 bread">
@@ -40,7 +41,7 @@
 				      </div>
 				    </div>
 			  	</div>
-			  	@endforeach			  
+			  	@endforeach
 			</div>
 		</div>
 	</div>

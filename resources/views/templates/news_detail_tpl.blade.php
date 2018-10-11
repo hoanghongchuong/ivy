@@ -1,8 +1,8 @@
 @extends('index')
 @section('content')
 <?php
-    $setting = Cache::get('setting');
-    $lang = Session::get('locale');
+$setting = Cache::get('setting');
+$lang = Session::get('locale');
 ?>
 <main class="">
     <section class="banner">
@@ -36,8 +36,8 @@
                       <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52843d4e1ff0313a"></script>
                    </p>
                 </div>
-            </div>            
-            <div class="content bdetail-content">                
+            </div>
+            <div class="content bdetail-content">
                 @if($lang =='vi') {!! $news_detail->content !!} @elseif($lang =='jp') {!! $news_detail->content !!} @endif
             </div>
 
@@ -68,7 +68,7 @@
                 </div>
             </div>
             @endforeach
-            
+
 
         </div>
     </div>

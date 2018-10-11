@@ -1,15 +1,15 @@
 @extends('index')
 @section('content')
 <?php
-    $setting = Cache::get('setting');
-    $about = DB::table('about')->where('com', 'lien-he')->first();
-   
+$setting = Cache::get('setting');
+$about = DB::table('about')->where('com', 'lien-he')->first();
+$banner = DB::table('banner_content')->where('position', 4)->first();
 ?>
 <main class="">
     <section class="banner">
         <div class="container">
             <div class="banner-wrap">
-                <img src="{{ asset('public/images/5.jpg')}}" alt="">
+                <img src="{{ asset('upload/banner/'.@$banner->image)}}" alt="">
                 <h1 class="medium s30 text-center text-white text-uppercase banner-tit">{{ __('label.lienhe') }}</h1>
             </div>
 

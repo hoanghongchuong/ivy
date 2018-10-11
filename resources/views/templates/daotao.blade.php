@@ -1,17 +1,18 @@
 @extends('index')
 @section('content')
 <?php
-    $setting = Cache::get('setting');
-    $about = DB::table('about')->where('com', 'lien-he')->first();
-    $lang = Session::get('locale');
+$setting = Cache::get('setting');
+$about = DB::table('about')->where('com', 'lien-he')->first();
+$banner = DB::table('banner_content')->where('position', 2)->first();
+$lang = Session::get('locale');
 ?>
 
 <main class="main-japan">
 	<section class="banner">
 		<div class="container">
 			<div class="banner-wrap">
-				<img src="{{ asset('public/images/5.jpg')}}" alt="">
-				<h1 class="medium s30 text-center text-white text-uppercase banner-tit">外国人技能実</br>習制度とは</h1>
+				<img src="{{ asset('upload/banner/'.$banner->image)}}" alt="">
+				<h1 class="medium s30 text-center text-white text-uppercase banner-tit">@if($lang =='vi'){{ $tintuc_cate->name }} @elseif($lang =='jp') {{ $tintuc_cate->name_en }}  @endif</h1>
 			</div>
 			<ul class="list-unstyled s14 bread">
 				<li><a href="{{url('')}}" title="">{{ __('label.home')}}</a></li>
