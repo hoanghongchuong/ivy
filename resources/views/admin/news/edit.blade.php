@@ -27,8 +27,10 @@
 	                <ul class="nav nav-tabs">
 	                  	<li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Thông tin chung</a></li>
 	                  	<li><a href="#tab_2" data-toggle="tab" aria-expanded="true">tiếng nhật</a></li>
-	                  	<!-- <li><a href="#tab_3" data-toggle="tab" aria-expanded="true">Album ảnh</a></li> -->
-	                  	@if($_GET['type']!='xuat-khau')
+	                  	@if($_GET['type']=='thu-vien')
+	                  	<li><a href="#tab_3" data-toggle="tab" aria-expanded="true">Album ảnh</a></li>
+	                  	@endif
+	                  	@if($_GET['type']!='xuat-khau' && $_GET['type']!='thu-vien')
 	                  	<li><a href="#tab_4" data-toggle="tab" aria-expanded="true">SEO</a></li>
 	                  	@endif
 	                </ul>
@@ -36,7 +38,7 @@
 	                  	<div class="tab-pane active" id="tab_1">
 	                  		<div class="row">
 		                  		<div class="col-md-6 col-xs-12">
-		                  			@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')
+		                  			@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 									<div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
 										<div class="form-group">
 											<img src="{{ asset('upload/news/'.$data->photo) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
@@ -51,7 +53,7 @@
 									</div>
 									@endif
 									<div class="clearfix"></div>
-									@if($_GET['type']=='tin-tuc' || $_GET['type']=='tuyen-dung' || $_GET['type']=='dao-tao' || $_GET['type']=='quy-trinh')
+									@if($_GET['type']=='tin-tuc' || $_GET['type']=='tuyen-dung' || $_GET['type']=='dao-tao' || $_GET['type']=='quy-trinh' || $_GET['type']!='thu-vien')
 									<div class="form-group">
 								      	<label for="ten">Danh mục bài viết</label>
 								      	<select name="txtNewsCate" class="form-control">
@@ -69,14 +71,14 @@
 								      	@endif
 									</div>
 
-									<div class="form-group @if($_GET['type']=='dao-tao' || $_GET['type']=='xuat-khau') hidden @endif @if ($errors->first('txtAlias')!='') has-error @endif">
+									<div class="form-group @if($_GET['type']=='dao-tao' || $_GET['type']=='xuat-khau') || $_GET['type']=='thu-vien' hidden @endif @if ($errors->first('txtAlias')!='') has-error @endif">
 								      	<label for="alias">Đường dẫn tĩnh</label>
 								      	<input type="text" name="txtAlias" id="txtAlias" value="{{ $data->alias }}"  class="form-control" />
 								      	@if ($errors->first('txtAlias')!='')
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
 									</div>
-									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')
+									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="txtDesc" rows="5" class="form-control">{{ $data->mota }}</textarea>
@@ -107,7 +109,7 @@
 								</div>
 								<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
 							</div>
-							@if($_GET['type']!='quy-trinh')
+							@if($_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 							<div class="row">
 								<div class="col-md-12">
 									<div class="box box-info">
@@ -122,14 +124,19 @@
 						        			<textarea name="txtContent" id="txtContent" cols="50" rows="5">{{ $data->content }}</textarea>
 						        		</div>
 						        	</div>
-						        	<div class="form-group">
+						        	
+							    </div>
+							</div>
+							@endif
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
 									    <label>
 								        	<input type="checkbox" name="status" {!! (!isset($data->status) || $data->status==1)?'checked="checked"':'' !!}> Hiển thị
 								    	</label>
 								    </div>
-							    </div>
+								</div>
 							</div>
-							@endif
 							<div class="clearfix"></div>
 	                  	</div><!-- /.tab-pane -->
 	                  	<div class="tab-pane" id="tab_2">
@@ -142,7 +149,7 @@
 						        			@endforeach
 						        		</div>
 						        	@endif
-						        	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')
+						        	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 						        	<div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
 										<div class="form-group">
 											<img src="{{ asset('upload/news/'.$data->photo_en) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
@@ -160,12 +167,13 @@
 								      	<label for="txtTitle">Name</label>
 								      	<input type="text" name="name_en" id="name_en" value="{{ $data->name_en }}"  class="form-control" />
 									</div>
+
 									<div class="form-group hidden">
 								      	<label for="alias">Alias</label>
 								      	<input type="text" name="txtAlias_en" id="txtAlias_en" value="{{$data->alias_en}}"  class="form-control" />
 									</div>
 
-			                    	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')
+			                    	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="mota_en" rows="5" class="form-control">{{ $data->mota_en }}</textarea>
@@ -175,7 +183,7 @@
 								</div>
 
 							</div>
-							@if($_GET['type']!='quy-trinh')
+							@if($_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 							<div class="row">
 								<div class="col-md-12">
 									<div class="box box-info">
@@ -190,24 +198,29 @@
 						        			<textarea name="content_en" id="txtContent" cols="50" rows="5">{!! $data->content_en !!}</textarea>
 						        		</div>
 						        	</div>
-						        	<div class="form-group">
+						        	
+								</div>
+							</div>
+							@endif
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
 									    <label>
 								        	<input type="checkbox" name="status_en" {!! (!isset($data->status_en) || $data->status_en==1)?'checked="checked"':'' !!}> Hiển thị
 								    	</label>
 								    </div>
 								</div>
 							</div>
-							@endif
 	                    	<div class="clearfix"></div>
 	                	</div>
 	                	<div class="tab-pane" id="tab_3">
 	                  		<div class="form-group">
 		                      @foreach($product_img as $key => $item)
-		                        <div class="form-group" id="{!! $key !!}">
+		                        <div class="col-md-3" id="{!! $key !!}" style="height: 150px;">
 		                            <img src="{!! asset('upload/service/'.$item['photo']) !!}" style="max-width: 150px; margin: 20px;" idImg="{!! $item['id'] !!}" id="{!! $key !!}">
-
 		                            <a href="javascript:" type="button" id="del_imgx" class="btn btn-danger btn-circle icon_del"><i class="fa fa-times"></i></a>
 		                        </div>
+
 		                      @endforeach
 
 

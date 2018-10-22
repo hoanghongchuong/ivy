@@ -1,7 +1,7 @@
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <ul class="sidebar-menu">        
+      <ul class="sidebar-menu">
         <!-- <li class="treeview ">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Quản lý phòng</span> <i class="fa fa-angle-left pull-right"></i>
@@ -17,9 +17,9 @@
             <i class="fa fa-edit"></i> <span>Quản lý tin tức</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">            
+          <ul class="treeview-menu">
             <li><a href="backend/newscate?type=tin-tuc"><i class="fa fa-circle-o"></i> <span>Danh mục</span></a></li>
-            <li><a href="backend/news?type=tin-tuc"><i class="fa fa-circle-o"></i> <span>Tin tức</span></a></li>           
+            <li><a href="backend/news?type=tin-tuc"><i class="fa fa-circle-o"></i> <span>Tin tức</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -27,22 +27,22 @@
             <i class="fa fa-edit"></i> <span>Quản lý tuyển dụng</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">            
+          <ul class="treeview-menu">
             <li><a href="backend/newscate?type=tuyen-dung"><i class="fa fa-circle-o"></i> <span>Danh mục</span></a></li>
-            <li><a href="backend/news?type=tuyen-dung"><i class="fa fa-circle-o"></i> <span>Tuyển dụng</span></a></li>           
+            <li><a href="backend/news?type=tuyen-dung"><i class="fa fa-circle-o"></i> <span>Tuyển dụng</span></a></li>
           </ul>
         </li>
         <li><a href="{{ asset('backend/langs?type=langs') }}"><i class="fa fa-circle-o"></i> <span>Ngôn ngữ website</span></a></li>
-        
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Quản lý giới thiệu</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">            
-            <li><a href="backend/about/edit?type=thu-ngo"><i class="fa fa-circle-o"></i> <span>Thư ngỏ</span></a></li>          
-            <li><a href="backend/lienket?type=the-manh"><i class="fa fa-circle-o"></i> <span>Thế mạnh</span></a></li>          
-            <li><a href="backend/lienket?type=thong-tin"><i class="fa fa-circle-o"></i> <span>Thông tin công ty</span></a></li>          
+          <ul class="treeview-menu">
+            <li><a href="backend/about/edit?type=thu-ngo"><i class="fa fa-circle-o"></i> <span>Thư ngỏ</span></a></li>
+            <li><a href="backend/lienket?type=the-manh"><i class="fa fa-circle-o"></i> <span>Thế mạnh</span></a></li>
+            <li><a href="backend/lienket?type=thong-tin"><i class="fa fa-circle-o"></i> <span>Thông tin công ty</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -50,50 +50,51 @@
             <i class="fa fa-edit"></i> <span>Quản lý đào tạo</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">            
+          <ul class="treeview-menu">
             <li><a href="backend/newscate?type=dao-tao"><i class="fa fa-circle-o"></i> <span>Danh mục</span></a></li>
-            <li><a href="backend/news?type=dao-tao"><i class="fa fa-circle-o"></i> <span>Danh sách</span></a></li>            
+            <li><a href="backend/news?type=dao-tao"><i class="fa fa-circle-o"></i> <span>Danh sách</span></a></li>
           </ul>
         </li>
         <li><a href="backend/news?type=xuat-khau"><i class="fa fa-circle-o"></i> <span>Xuất khẩu lao động</span></a></li>
-        
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Chế độ thực tập </span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">            
+          <ul class="treeview-menu">
             <li><a href="backend/about/edit?type=thuc-tap"><i class="fa fa-circle-o"></i> <span>Mô tả</span></a></li>
             <li>
               <a href="backend/news?type=thuc-tap"><i class="fa fa-circle-o"></i> <span>Chế độ thực tập</span></a>
-            </li>            
+            </li>
           </ul>
-        </li> 
+        </li>
         <li><a href="backend/faq"><i class="fa fa-circle-o"></i> <span>FAQ</span></a></li>
-        
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Ảnh và video </span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">            
+          <ul class="treeview-menu">
             <li><a href="backend/about/edit?type=video"><i class="fa fa-circle-o"></i> <span>Mô tả</span></a></li>
             <li><a href="backend/video"><i class="fa fa-circle-o"></i> <span>Video</span></a></li>
-            <li><a href="backend/lienket?type=thu-vien"><i class="fa fa-circle-o"></i> <span>Thư viện ảnh</span></a></li>            
+            <!-- <li><a href="backend/lienket?type=thu-vien"><i class="fa fa-circle-o"></i> <span>Thư viện ảnh</span></a></li>             -->
+            <li><a href="backend/news?type=thu-vien"><i class="fa fa-circle-o"></i> <span>Thư viện ảnh</span></a></li>
           </ul>
-        </li>        
+        </li>
         <!-- <li><a href="backend/partner"><i class="fa fa-circle-o"></i> <span>Đối tác</span></a></li>        -->
         <li><a href="backend/contact"><i class="fa fa-envelope"></i> <span>Quản lý liên hệ</span></a></li>
         <!-- <li><a href="backend/newsletter?type=newsletter"><i class="fa fa-circle-o"></i> <span>Đăng ký nhận tin</span></a></li> -->
-        
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Lợi ích</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">            
+          <ul class="treeview-menu">
             <li><a href="backend/about/edit?type=loi-the"><i class="fa fa-circle-o"></i> <span>Mô tả</span></a></li>
-            <li><a href="backend/lienket?type=loi-the"><i class="fa fa-circle-o"></i> <span>Bài viết</span></a></li>            
+            <li><a href="backend/lienket?type=loi-the"><i class="fa fa-circle-o"></i> <span>Bài viết</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -101,9 +102,9 @@
             <i class="fa fa-edit"></i> <span>Thế mạnh của IvyHr </span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">            
+          <ul class="treeview-menu">
             <li><a href="backend/about/edit?type=the-manh-ivy"><i class="fa fa-circle-o"></i> <span>Mô tả</span></a></li>
-            <li><a href="backend/lienket?type=the-manh-ivy"><i class="fa fa-circle-o"></i> <span>Bài viết</span></a></li>            
+            <li><a href="backend/lienket?type=the-manh-ivy"><i class="fa fa-circle-o"></i> <span>Bài viết</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -111,12 +112,12 @@
             <i class="fa fa-edit"></i> <span>Quy trình tiếp nhận </span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">            
+          <ul class="treeview-menu">
             <li><a href="backend/about/edit?type=quy-trinh"><i class="fa fa-circle-o"></i> <span>Mô tả</span></a></li>
             <li><a href="backend/newscate?type=quy-trinh"><i class="fa fa-circle-o"></i> <span>Danh mục</span></a></li>
-            <li><a href="backend/news?type=quy-trinh"><i class="fa fa-circle-o"></i> <span>Danh sách</span></a></li>            
+            <li><a href="backend/news?type=quy-trinh"><i class="fa fa-circle-o"></i> <span>Danh sách</span></a></li>
           </ul>
-        </li> 
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
@@ -130,12 +131,12 @@
            <!-- <li><a href="backend/lienket?type=tieu-chi"><i class="fa fa-circle-o"></i> <span>Ảnh quảng cáo sidebar</span></a></li> -->
             <li><a href="backend/banner"><i class="fa fa-gear" aria-hidden="true"></i> <span>Quản lý banner</span></a></li>
           </ul>
-        </li>       
-        
+        </li>
+
         <!-- <li><a href="backend/position"><i class="fa fa-gear" aria-hidden="true"></i> <span>Vị trí quảng cáo</span></a></li> -->
         <li><a href="{{ asset('backend/setting') }}"><i class="fa fa-gear" aria-hidden="true"></i> <span>Quản lý thiết lập</span></a></li>
-       
-       
+
+
         <!-- <li><a href="backend/province"><i class="fa fa-gear" aria-hidden="true"></i> <span>Quản lý tỉnh/ thành phố</span></a></li> -->
          <!-- <li><a href="backend/district"><i class="fa fa-gear" aria-hidden="true"></i> <span>Quản lý quận/ huyện</span></a></li> -->
       </ul>

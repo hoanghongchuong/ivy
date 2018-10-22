@@ -7,7 +7,7 @@ $banner = DB::table('banner_content')->where('position', 2)->first();
 $lang = Session::get('locale');
 ?>
 
-<main class="main-japan">
+<main class="main">
 	<section class="banner">
 		<div class="container">
 			<div class="banner-wrap">

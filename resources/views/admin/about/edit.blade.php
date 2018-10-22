@@ -26,8 +26,9 @@
       			<div class="nav-tabs-custom">
 	                <ul class="nav nav-tabs">
 	                  	<li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Thông tin chung</a></li>
-	                  	
+	                  	<li><a href="#tab_3" data-toggle="tab" aria-expanded="true">Tiếng nhật</a></li>
 	                  	<li><a href="#tab_2" data-toggle="tab" aria-expanded="true">SEO</a></li>
+	                  	
 	                  	
 	                </ul>
 	                <div class="tab-content">
@@ -114,6 +115,19 @@
 						        		</div>
 						        	</div>
 								</div>
+								
+								
+							</div>
+							<div class="form-group">
+							    <label>
+						        	<input type="checkbox" name="status" {!! (!isset($data->status) || $data->status==1)?'checked="checked"':'' !!}> Hiển thị
+						    	</label>
+						    </div>
+							<div class="clearfix"></div>
+	                  	</div><!-- /.tab-pane -->
+	                  	<div class="tab-pane" id="tab_3">
+	                  		<div class="row">
+		                  										
 								<div class="col-md-12 col-xs-12">
 									<div class="box box-info">
 						                <div class="box-header">                                               
@@ -128,11 +142,14 @@
 						        		</div>
 						        	</div>
 								</div>
-								
+								<div class="form-group">
+						    <label>
+						        	<input type="checkbox" name="status_en" {!! (!isset($data->status_en) || $data->status_en==1)?'checked="checked"':'' !!}> Hiển thị
+						    	</label>
+						    </div>
 							</div>
 							<div class="clearfix"></div>
 	                  	</div><!-- /.tab-pane -->
-	                  	
 	                	<div class="tab-pane" id="tab_2">
 	                  		<div class="row">
 		                    	<div class="col-md-6 col-xs-12">
@@ -167,11 +184,7 @@
 	                    	<div class="clearfix"></div>
 	                	</div>
 
-	                	<div class="form-group">
-						    <label>
-					        	<input type="checkbox" name="status" {!! (!isset($data->status) || $data->status==1)?'checked="checked"':'' !!}> Hiển thị
-					    	</label>
-					    </div>
+	                	
 	                </div><!-- /.tab-content -->
 	            </div>
 			    <div class="clearfix"></div>

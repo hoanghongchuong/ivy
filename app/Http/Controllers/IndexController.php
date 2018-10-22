@@ -64,6 +64,7 @@ class IndexController extends Controller {
 		return redirect()->back();
 	}
 	public function index() {
+		$lang = Session::get('locale');
 		$banner_danhmuc = DB::table('lienket')->select()->where('status', 1)->where('com', 'chuyen-muc')->where('link', 'index')->get()->first();
 		$banner_sidebar = DB::table('banner_content')->where('position', 5)->get();
 		$tintuc_moinhat = DB::table('news')->where('com', 'tin-tuc')->where('status', 1)->orderBy('id', 'desc')->first();
@@ -74,10 +75,23 @@ class IndexController extends Controller {
 		$slogans = DB::table('slogan')->orderBy('id', 'asc')->get();
 		$loiich = DB::table('about')->where('com', 'loi-the')->first();
 		$themanh = DB::table('about')->where('com', 'the-manh-ivy')->first();
-		$post_loiich = DB::table('lienket')->where('com', 'loi-the')->get();
-		$post_themanh = DB::table('lienket')->where('com', 'the-manh-ivy')->get();
+
+		if($lang =='vi'){
+			$post_loiich = DB::table('lienket')->where('com', 'loi-the')->where('status',1)->get();
+		}
+		elseif($lang =='jp')
+		{
+			$post_loiich = DB::table('lienket')->where('com', 'loi-the')->where('status_en',1)->get();
+		}
+		
+
+		$post_themanh = DB::table('lienket')->where('com', 'the-manh-ivy')->orderBy('id', 'asc')->get();
 		$about_video = DB::table('about')->where('com', 'video')->first();
-		$gallery_home = DB::table('lienket')->where('com', 'thu-vien')->where('status', 1)->take(3)->get();
+		// $gallery_home = DB::table('lienket')->where('com', 'thu-vien')->where('status', 1)->get();
+		$gallery_home = DB::table('news')->where('com', 'thu-vien')->first();
+		
+		$album_images = DB::table('images')->where('service_id', $gallery_home->id)->get();
+		
 		// Cấu hình SEO
 		$setting = Cache::get('setting');
 		$slider = DB::table('slider')->get();
@@ -86,7 +100,7 @@ class IndexController extends Controller {
 		$description = $setting->description;
 		// End cấu hình SEO
 		$img_share = asset('upload/hinhanh/' . $setting->photo);
-		return view('templates.index_tpl', compact('banner_danhmuc', 'com', 'about', 'tintuc_moinhat', 'keyword', 'description', 'title', 'img_share', 'hot_news', 'slider', 'partners', 'slogans', 'loiich', 'post_loiich', 'post_themanh', 'themanh', 'about_video', 'gallery_home'));
+		return view('templates.index_tpl', compact('banner_danhmuc', 'com', 'about', 'tintuc_moinhat', 'keyword', 'description', 'title', 'img_share', 'hot_news', 'slider', 'partners', 'slogans', 'loiich', 'post_loiich', 'post_themanh', 'themanh', 'about_video', 'album_images'));
 	}
 
 	public function getAbout() {
@@ -433,6 +447,7 @@ class IndexController extends Controller {
 		$category = DB::table('news_categories')->where('id', $news_detail->cate_id)->first();
 
 		if (!empty($news_detail)) {
+
 			$news = DB::table('news')->select()->where('status', 1)->where('com', 'tin-tuc')->orderby('id', 'desc')->take(5)->get();
 			$com = 'tin-tuc';
 			$setting = Cache::get('setting');

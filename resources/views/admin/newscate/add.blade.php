@@ -89,6 +89,15 @@
 									</div>
 								</div> -->
 							</div>
+							<div class="row">
+						    	<div class="col-md-12">
+						    		<div class="form-group">
+									    <label>
+								        	<input type="checkbox" name="status" checked="checked"> Hiển thị
+								    	</label>
+								    </div>
+						    	</div>
+						    </div>
 							<div class="clearfix"></div>
 	                  	</div><!-- /.tab-pane -->
 	                  	<div class="tab-pane" id="tab_3">
@@ -125,6 +134,15 @@
 									</div> -->
 								</div>
 							</div>
+							<div class="row">
+						    	<div class="col-md-12">
+						    		<div class="form-group">
+									    <label>
+								        	<input type="checkbox" name="status_en" checked="checked"> Hiển thị
+								    	</label>
+								    </div>
+						    	</div>
+						    </div>
 							<div class="clearfix"></div>
 	                  	</div>
 	                  	<div class="tab-pane" id="tab_2">
@@ -167,16 +185,10 @@
 			    	<div class="form-group">
 					      <label for="ten">Số thứ tự</label>
 					      <input type="number" min="1" name="stt" value="{!! count($parent)+1 !!}" class="form-control" style="width: 100px;">
-				    </div>
-				    
-				    <div class="form-group">
-					    <label>
-				        	<input type="checkbox" name="status" checked="checked"> Hiển thị
-				    	</label>
-				    </div>
-			    	
+				    </div>			    	
 			    </div>
 			    <div class="clearfix"></div>
+			    
 			    <div class="box-footer">
 			    	<div class="row">
 						<div class="col-md-6">

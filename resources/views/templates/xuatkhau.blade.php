@@ -1,11 +1,11 @@
 @extends('index')
 @section('content')
 <?php
-    $setting = Cache::get('setting');
-    $lang = Session::get('locale');
-    $banner = DB::table('banner_content')->where('position', 9)->first();
+$setting = Cache::get('setting');
+$lang = Session::get('locale');
+$banner = DB::table('banner_content')->where('position', 9)->first();
 ?>
-<main class="main-japan">
+<main class="main">
 	<section class="banner">
 		<div class="container">
 			<div class="banner-wrap">

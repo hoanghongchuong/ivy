@@ -169,6 +169,11 @@ class AboutController extends Controller
             }else{
                 $data->status = 0;
             }
+            if($request->status_en=='on'){
+                $data->status_en = 1;
+            }else{
+                $data->status_en = 0;
+            }
             $data->user_id   = Auth::user()->id;
             // dd($data);    
             $data->save();

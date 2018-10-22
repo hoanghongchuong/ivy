@@ -324,7 +324,7 @@ class NewsController extends Controller
                 $news->status_en = 0;
             }
             $news->user_id = Auth::user()->id;
-
+            
             $news->save();
             return redirect('backend/news/edit?id='.$id.'&type='.$com)->with('status','Cập nhật thành công');
         }else{

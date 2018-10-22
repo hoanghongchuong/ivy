@@ -16,20 +16,22 @@
 </section>
 <!-- Main content -->
 <section class="content">
-  
+
     <div class="box">
     	@include('admin.messages_error')
         <div class="box-body">
-        	
+
         	<form name="frmAdd" method="post" action="{!! route('admin.news.postAdd') !!}" enctype="multipart/form-data">
         		<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
-	      		
+
       			<div class="nav-tabs-custom">
 	                <ul class="nav nav-tabs">
 	                  	<li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Thông tin chung</a></li>
 	                  	<li><a href="#tab_2" data-toggle="tab" aria-expanded="true">tiếng nhật</a></li>
-	                  	<!-- <li><a href="#tab_4" data-toggle="tab" aria-expanded="true">Album ảnh</a></li> -->
-	                  	@if($_GET['type']!='xuat-khau')
+	                  	@if($_GET['type']=='thu-vien')
+	                  	<li><a href="#tab_4" data-toggle="tab" aria-expanded="true">Album ảnh</a></li>
+	                  	@endif
+	                  	@if($_GET['type']!='xuat-khau' && $_GET['type']!='thu-vien')
 	                  	<li><a href="#tab_3" data-toggle="tab" aria-expanded="true">SEO</a></li>
 	                  	@endif
 	                </ul>
@@ -44,7 +46,7 @@
 						        			@endforeach
 						        		</div>
 						        	@endif
-						        	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')
+						        	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 									<div class="form-group col-md-12 @if ($errors->first('fImages')!='') has-error @endif">
 										<label for="file">File ảnh</label>
 								     	<input type="file" id="file" name="fImages" >
@@ -55,13 +57,13 @@
 									</div>
 									@endif
 									<div class="clearfix"></div>
-									@if($_GET['type']=='tin-tuc' || $_GET['type']=='tuyen-dung' || $_GET['type']=='dao-tao' || $_GET['type']=='quy-trinh')
+									@if($_GET['type']=='tin-tuc' || $_GET['type']=='tuyen-dung' || $_GET['type']=='dao-tao' || $_GET['type']=='quy-trinh' || $_GET['type']!='thu-vien')
 									<div class="form-group">
 								      	<label for="ten">Danh mục cha</label>
 								      	<select name="txtNewsCate" class="form-control">
 
 								      		<option value="0">Chọn danh mục</option>
-								      		<?php cate_parent($parent,0,"--",0) ?>
+								      		<?php cate_parent($parent, 0, "--", 0)?>
 								      	</select>
 									</div>
 									@endif
@@ -71,15 +73,15 @@
 								      	@if ($errors->first('txtName')!='')
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtName'); !!}</label>
 								      	@endif
-									</div>									
-									<div class="form-group @if($_GET['type']=='dao-tao' || $_GET['type']=='xuat-khau' || $_GET['type']=='thuc-tap' || $_GET['type']=='quy-trinh') hidden @endif  @if($errors->first('txtAlias')!='') has-error @endif">
+									</div>
+									<div class="form-group @if($_GET['type']=='dao-tao' || $_GET['type']=='xuat-khau' || $_GET['type']=='thuc-tap' || $_GET['type']=='quy-trinh' || $_GET['type']=='thu-vien') hidden @endif  @if($errors->first('txtAlias')!='') has-error @endif">
 								      	<label for="alias">Đường dẫn tĩnh</label>
 								      	<input type="text" name="txtAlias" id="txtAlias" value=""  class="form-control" />
 								      	@if ($errors->first('txtAlias')!='')
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
-									</div>	
-									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')							
+									</div>
+									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="txtDesc" rows="5" class="form-control"></textarea>
@@ -100,7 +102,7 @@
 									@endif
 								</div> -->
 							</div>
-							@if($_GET['type']!='quy-trinh')
+							@if($_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 							<div class="row">
 								<div class="col-md-12">
 									<div class="box box-info">
@@ -115,14 +117,20 @@
 						        			<textarea name="txtContent" id="txtContent" cols="50" rows="5"></textarea>
 						        		</div>
 						        	</div>
-						        	<div class="form-group">
+						        	
+								</div>
+							</div>
+							@endif
+
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
 									    <label>
 								        	<input type="checkbox" name="status" checked="checked"> Hiển thị
 								    	</label>
 								    </div>
 								</div>
 							</div>
-							@endif
 							<div class="clearfix"></div>
 
 	                  	</div><!-- /.tab-pane -->
@@ -136,7 +144,7 @@
 						        			@endforeach
 						        		</div>
 						        	@endif
-									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')									
+									@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 									<div class="form-group col-md-12 @if ($errors->first('fImages')!='') has-error @endif">
 										<label for="file">File ảnh</label>
 								     	<input type="file" id="file" name="fImages_en" >
@@ -153,8 +161,8 @@
 										<div class="form-group hidden">
 									      	<label for="alias">Alias</label>
 									      	<input type="text" name="txtAlias_en" id="txtAlias_en" value=""  class="form-control" />
-										</div>			                    		
-			                    	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh')
+										</div>
+			                    	@if($_GET['type']!='dao-tao' && $_GET['type']!='xuat-khau' && $_GET['type']!='thuc-tap' && $_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="mota_en" rows="5" class="form-control"></textarea>
@@ -162,9 +170,9 @@
 									@endif
 									<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
 								</div>
-								
+
 							</div>
-							@if($_GET['type']!='quy-trinh')
+							@if($_GET['type']!='quy-trinh' && $_GET['type']!='thu-vien')
 							<div class="row">
 								<div class="col-md-12">
 									<div class="box box-info">
@@ -179,14 +187,19 @@
 						        			<textarea name="content_en" id="txtContent" cols="50" rows="5"></textarea>
 						        		</div>
 						        	</div>
-						        	<div class="form-group">
+						        	
+								</div>
+							</div>
+							@endif
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
 									    <label>
 								        	<input type="checkbox" name="status_en" checked="checked"> Hiển thị
 								    	</label>
 								    </div>
 								</div>
 							</div>
-							@endif
 	                    	<div class="clearfix"></div>
 	                	</div><!-- /.tab-pane -->
 	                	<div class="tab-pane" id="tab_4">
@@ -230,7 +243,7 @@
 	                    	</div>
 	                    	<div class="clearfix"></div>
 	                	</div>
-	                	
+
 	                </div><!-- /.tab-content -->
 	            </div>
 	            <div class="clearfix"></div>
@@ -248,13 +261,13 @@
 					      <label for="ten">Số thứ tự</label>
 					      <input type="number" min="1" name="stt" value="{!! count($data)+1 !!}" class="form-control" style="width: 100px;">
 				    </div> -->
-				    
+
 				    <!-- <div class="form-group">
 					    <label>
 				        	<input type="checkbox" name="status" checked="checked"> Hiển thị
 				    	</label>
 				    </div> -->
-			    	
+
 			    </div>
 			    <div class="clearfix"></div>
 			    <div class="box-footer">
@@ -268,7 +281,7 @@
 		    </form>
         </div><!-- /.box-body -->
     </div><!-- /.box -->
-    
+
 </section><!-- /.content -->
 
 @endsection()

@@ -82,7 +82,11 @@ class LienKetController extends Controller
         }else{
             $news->status = 0;
         }
-        
+        if($request->status_en=='on'){
+            $news->status_en = 1;
+        }else{
+            $news->status_en = 0;
+        }
         $news->user_id = Auth::user()->id;
         $news->save();
         return redirect('backend/lienket?type='.$com)->with('status','Thêm mới thành công !');
@@ -185,6 +189,11 @@ class LienKetController extends Controller
                 $news->status = 1;
             }else{
                 $news->status = 0;
+            }
+            if($request->status_en=='on'){
+                $news->status_en = 1;
+            }else{
+                $news->status_en = 0;
             }
             $news->user_id       = Auth::user()->id;
 

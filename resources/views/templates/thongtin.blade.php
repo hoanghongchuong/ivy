@@ -34,7 +34,7 @@
 									<h3 class="t1 medium tt-item-tit">@if($lang =='vi'){{$item->name}} @elseif($lang =='jp') {{ $item->name_en }} @endif</h3>
 								</div>
 								<div class="col-lg-9 col-md-8 col-sm-8">
-									@if($lang =='vi'){{$item->name}} {!! $item->content !!} @elseif($lang =='jp') {!! $item->content !!} @endif
+									@if($lang =='vi') {!! $item->content !!} @elseif($lang =='jp') {!! $item->content_en !!} @endif
 								</div>
 							</div>
 						</div>

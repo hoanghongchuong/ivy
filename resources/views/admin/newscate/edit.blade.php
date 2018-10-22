@@ -97,6 +97,15 @@
 									@endif
 								</div> -->
 							</div>
+							<div class="row">
+						    	<div class="col-md-12">
+						    		<div class="form-group">
+									    <label>
+								        	<input type="checkbox" name="status" {!! (!isset($data->status) || $data->status==1)?'checked="checked"':'' !!}> Hiển thị
+								    	</label>
+								    </div>
+						    	</div>
+						    </div>
 							<div class="clearfix"></div>
 	                  	</div><!-- /.tab-pane -->
 	                  	<div class="tab-pane" id="tab_3">
@@ -111,10 +120,17 @@
 								      	<input type="text" name="txtAlias_en" id="txtAlias_en" value="{{ isset($data->alias_en) ? $data->alias_en : '' }}"  class="form-control" />
 									</div> -->
 		                    		
-									
-		                    	</div>
-								
+		                    	</div>								
 							</div>
+							<div class="row">
+						    	<div class="col-md-12">
+						    		<div class="form-group">
+									    <label>
+								        	<input type="checkbox" name="status_en" {!! (!isset($data->status_en) || $data->status_en==1)?'checked="checked"':'' !!}> Hiển thị
+								    	</label>
+								    </div>
+						    	</div>
+						    </div>
 							<div class="clearfix"></div>
 	                  	</div>
 	                  	<div class="tab-pane" id="tab_2">
@@ -157,14 +173,7 @@
 			    	<div class="form-group">
 					      <label for="ten">Số thứ tự</label>
 					      <input type="number" min="1" name="stt" value="{!! isset($data->status) ? $data->stt : (count($parent)+1) !!}" class="form-control" style="width: 100px;">
-				    </div>
-				    
-				    <div class="form-group">
-					    <label>
-				        	<input type="checkbox" name="status" {!! (!isset($data->status) || $data->status==1)?'checked="checked"':'' !!}> Hiển thị
-				    	</label>
-				    </div>
-			    	
+				    </div>			    	
 			    </div>
 			    <div class="clearfix"></div>
 			    <div class="box-footer col-md-12 row">

@@ -5,10 +5,10 @@
 $setting = Cache::get('setting');
 $lang = Session::get('locale');
 $cateProducts = Cache::get('cateProducts');
-$sliders = DB::table('slider')->where('com','gioi-thieu')->where('status',1)->get();
-$cate_quytrinh = DB::table('news_categories')->where('com','quy-trinh')->get();
-$about_quytrinh = DB::table('about')->where('com','quy-trinh')->first();
-$about_thuctap = DB::table('about')->where('com','thuc-tap')->first();
+$sliders = DB::table('slider')->where('com', 'gioi-thieu')->where('status', 1)->get();
+$cate_quytrinh = DB::table('news_categories')->where('com', 'quy-trinh')->get();
+$about_quytrinh = DB::table('about')->where('com', 'quy-trinh')->first();
+$about_thuctap = DB::table('about')->where('com', 'thuc-tap')->first();
 
 ?>
 <style>
@@ -64,8 +64,8 @@ $about_thuctap = DB::table('about')->where('com','thuc-tap')->first();
 		display: none;
 	}
 	.qt-swrap:first-child .qt-items .qt-item:first-child,
-	.qt-swrap:first-child .qt-items .qt-item:nth-child(3), 
-	.qt-swrap:last-child .qt-items .qt-item:first-child, 
+	.qt-swrap:first-child .qt-items .qt-item:nth-child(3),
+	.qt-swrap:last-child .qt-items .qt-item:first-child,
 	.qt-swrap:last-child .qt-items .qt-item:last-child {
 		background: rgba(194, 10, 1, .77);
 	    opacity: .77;
@@ -96,7 +96,7 @@ $about_thuctap = DB::table('about')->where('com','thuc-tap')->first();
 					<a href="#" title=""><img class="slider-img" src="{{asset('upload/hinhanh/'.$slider->photo)}}" alt="slider-img" title="#caption{{$k}}" /></a>
 					@endforeach
 				</div>
-			</div>	
+			</div>
 		</div>
 	</section>
 	<!-- Tại sao chọn chúng tôi -->
@@ -110,91 +110,126 @@ $about_thuctap = DB::table('about')->where('com','thuc-tap')->first();
 				@endif
 			</h2>
 			<div class="w-lg-80 t2 s16 text-center m-auto why-sum wow fadeInUp" data-wow-offset="150">
-				<h3 class="">@if($lang =='vi') {!! $loiich->content !!} @elseif($lang =='jp') {!!$loiich->content_en!!} @endif</h3>
+				<h3 class="">@if($lang =='vi') {!! @$loiich->content !!} @elseif($lang =='jp') {!!@$loiich->content_en!!} @endif</h3>
 			</div>
 			<div class="why-wrap" style="background:url({{ asset('public/images/map.png')  }}) no-repeat center center; background-size: contain;">
 				<div class="row">
-					@foreach($post_loiich as $k=>$post)
+					@foreach(@$post_loiich as $k=>$post)
+					
 					<div class="col-sm-6 wow fadeInUp" data-wow-offset="150">
-						<section class="why-item">
+						<section class="why-item">							
 							<h3 class="s18 why-item-tit">
 								<span class="why-counter">{{$k+1}}</span>
-								<span class="t1">@if($lang =='vi'){{$post->name}} @elseif($lang =='jp') {{$post->name_en}} @endif</span>
-							</h3>
+								<span class="t1">@if($lang =='vi'){{@$post->name}} @else {{@$post->name_en}} @endif</span>
+							</h3>							
 							<div class="s16 why-item-content">
-								<p>@if($lang =='vi') {!! $post->content !!}  @elseif($lang =='jp') {!! $post->content_en !!} @endif</p>
+								<p>@if($lang =='vi') {!! @$post->content !!} @else  {!! @$post->content_en !!} @endif</p>
 							</div>
 						</section>
 					</div>
+					
 					@endforeach
 				</div>
 			</div>
 		</div>
 	</section>
+
 	<!-- td Thực tập sinh -->
+	@if(@$about_thuctap->status == 1 && $lang =='vi')
 	<section class="td">
 		<div class="container">
-			<h2 class="s30 t1 text-center td-tit wow fadeInUp" data-wow-offset="150">@if($lang =='vi'){{ $about_thuctap->name }} @elseif($lang =='jp') {{ $about_thuctap->name_en }} @endif</h2>
+			<h2 class="s30 t1 text-center td-tit wow fadeInUp" data-wow-offset="150">@if($lang =='vi'){{ @$about_thuctap->name }} @elseif($lang =='jp') {{ @$about_thuctap->name_en }} @endif</h2>
 			<div class="td-content wow fadeInUp" data-wow-offset="150">
-				@if($lang =='vi') {!! $about_thuctap->content !!}  @elseif($lang =='jp') {!! $about_thuctap->content_en !!} @endif
+				@if($lang =='vi') {!! @$about_thuctap->content !!}  @elseif($lang =='jp') {!! @$about_thuctap->content_en !!} @endif
 			</div>
 			<div class="text-center"><a href="{{$about_thuctap->alias}}" title="" class="btn jbtn">{{ __('label.docthem') }}</a></div>
 		</div>
 	</section>
-	<!-- quy trình -->
-	<section class="qt @if($lang =='vi') vqt @endif">
-		<div class="container">			
-			<h2 class="s30 t1 text-center td-tit wow fadeInUp wow fadeInUp" data-wow-offset="150">{{$about_quytrinh->name}}</h2>
-			<div class="w-lg-80 t2 s16 text-center m-auto qt-sum wow fadeInUp wow fadeInUp" data-wow-offset="150">
-				<h3 class="">{!! $about_quytrinh->content !!}</h3>
+	@elseif(@$about_thuctap->status_en == 1 && $lang =='jp')
+	<section class="td">
+		<div class="container">
+			<h2 class="s30 t1 text-center td-tit wow fadeInUp" data-wow-offset="150">@if($lang =='vi'){{ @$about_thuctap->name }} @elseif($lang =='jp') {{ @$about_thuctap->name_en }} @endif</h2>
+			<div class="td-content wow fadeInUp" data-wow-offset="150">
+				@if($lang =='vi') {!! @$about_thuctap->content !!}  @elseif($lang =='jp') {!! @$about_thuctap->content_en !!} @endif
 			</div>
-			@if($lang =='vi')
+			<div class="text-center"><a href="{{$about_thuctap->alias}}" title="" class="btn jbtn">{{ __('label.docthem') }}</a></div>
+		</div>
+	</section>
+	@endif
+	<!-- quy trình -->
+	@if(@$about_quytrinh->status == 1 && $lang =='vi')
+	<section class="qt vqt">
+		<div class="container">
+			<h2 class="s30 t1 text-center td-tit wow fadeInUp wow fadeInUp" data-wow-offset="150">{{@$about_quytrinh->name}}</h2>
+			<div class="w-lg-80 t2 s16 text-center m-auto qt-sum wow fadeInUp wow fadeInUp" data-wow-offset="150">
+				<h3 class="">{!! @$about_quytrinh->content !!}</h3>
+			</div>			
 			<div class="s16 qt-wrap">
 				@foreach($cate_quytrinh as $cateq)
-				<?php $posts = DB::table('news')->where('com','quy-trinh')->where('cate_id', $cateq->id)->get(); ?>
+				<?php $posts = DB::table('news')->where('com', 'quy-trinh')->where('cate_id', $cateq->id)->get();?>
 				<div class="qt-swrap">
 					<div class="row justify-content-center">
+						@if(@$cateq->status == 1)
 						<div class="col-sm-2 col-3 d-flex align-items-center">
 							<h3 class="text-center qt-item-tit wow fadeInUp" data-wow-offset="150">
-								{{$cateq->name}}
+								{{@$cateq->name}}
 							</h3>
 						</div>
 						<div class="col-sm-10 col-9">
 							<div class="qt-items">
 								@foreach($posts as $item)
-								<h4 class="qt-item wow fadeInUp wow fadeInUp" data-wow-offset="150">{{$item->name}}</h4>
+								@if($item->status == 1)
+								<h4 class="qt-item wow fadeInUp wow fadeInUp" data-wow-offset="150">{{@$item->name}}</h4>
+								@endif
 								@endforeach
 							</div>
 						</div>
+						@endif
 					</div>
-				</div>				
+				</div>
 				@endforeach
 			</div>
-			@elseif($lang =='jp')
+		</div>
+	</section>
+	@endif
+	@if($lang =='jp' && @$about_quytrinh->status_en == 1)
+	<section class="qt">
+		<div class="container">
+			<h2 class="s30 t1 text-center td-tit wow fadeInUp wow fadeInUp" data-wow-offset="150">{{@$about_quytrinh->name_en}}</h2>
+			<div class="w-lg-80 t2 s16 text-center m-auto qt-sum wow fadeInUp wow fadeInUp" data-wow-offset="150">
+				<h3 class="">{!! @$about_quytrinh->content_en !!}</h3>
+			</div>			
 			<div class="s16 qt-wrap">
 				<div class="row justify-content-center">
 					@foreach($cate_quytrinh as $cateq)
-					<?php $posts = DB::table('news')->where('com','quy-trinh')->where('cate_id', $cateq->id)->get(); ?>
-					<div class="col-lg-4 col-md-6 col-sm-6">
-						<div class="qt-items">
-							@foreach($posts as $item)
-								<h4 class="qt-item wow fadeInUp wow fadeInUp" data-wow-offset="150">{{$item->name_en}}</h4>
-							@endforeach
+					<?php $posts = DB::table('news')->where('com', 'quy-trinh')->where('cate_id', $cateq->id)->get();?>
+						@if($cateq->status_en == 1)
+						<div class="col-lg-4 col-md-6 col-sm-6">
+							
+							<div class="qt-items">
+								@foreach($posts as $item)
+									@if($item->status_en == 1)
+										<h4 class="qt-item wow fadeInUp wow fadeInUp" data-wow-offset="150">{{@$item->name_en}}</h4>
+									@endif
+								@endforeach
+							</div>
+							
+							<h3 class="text-center qt-item-tit wow fadeInUp" data-wow-offset="150">
+								{{@$cateq->name_en}}
+							</h3>
 						</div>
-						<h3 class="text-center qt-item-tit wow fadeInUp" data-wow-offset="150">
-							{{$cateq->name_en}}
-						</h3>
-					</div>
+						@endif
 					@endforeach
 				</div>
 			</div>
-			@endif
+			
 		</div>
 	</section>
+	@endif
 	<!-- hợp tác -->
 	<section class="ht" style="background: url({{ asset('public/images/bgj.png')  }}) no-repeat center center; background-attachment: fixed;background-size: cover;">
 		<div class="container">
-			<h2 class="s30 t1 text-center ht-tit wow fadeInUp" data-wow-offset="150">@if($lang == 'vi'){{ $themanh->name }} @elseif($lang =='jp') {{$themanh->name_en}} @endif</h2>
+			<h2 class="s30 t1 text-center ht-tit wow fadeInUp" data-wow-offset="150">@if($lang == 'vi'){{ @$themanh->name }} @elseif($lang =='jp') {{@$themanh->name_en}} @endif</h2>
 			<div class="w-lg-80 t2 s16 text-center m-auto qt-sum wow fadeInUp" data-wow-offset="150">
 				<h3 class="">@if($lang == 'vi'){!! $themanh->content !!} @elseif($lang =='jp') {!!$themanh->content_en!!} @endif</h3>
 			</div>
@@ -204,7 +239,7 @@ $about_thuctap = DB::table('about')->where('com','thuc-tap')->first();
 					@foreach($post_themanh as $item)
 					<div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-offset="150">
 						<div class="ht-item">
-							@if($lang =='vi') {!! $item->content !!} @elseif($lang =='jp') {!! $item->content_en !!} @endif
+							@if($lang =='vi') {!! @$item->content !!} @elseif($lang =='jp') {!! @$item->content_en !!} @endif
 						</div>
 					</div>
 					@endforeach
@@ -215,16 +250,16 @@ $about_thuctap = DB::table('about')->where('com','thuc-tap')->first();
 	<!-- ảnh - video -->
 	<section class="gallery" style="background: url({{asset('public/images/videobgj.jpg')}}) top center;">
 		<div class="container">
-			<h2 class="s30 t1 text-center td-tit wow fadeInUp" data-wow-offset="150">@if($lang =='vi') {{ $about_video->name }} @elseif($lang =='jp') {{ $about_video->name_en }} @endif</h2>
+			<h2 class="s30 t1 text-center td-tit wow fadeInUp" data-wow-offset="150">@if($lang =='vi') {{ @$about_video->name }} @elseif($lang =='jp') {{ @$about_video->name_en }} @endif</h2>
 			<div class="w-lg-80 t2 s16 text-center m-auto qt-sum wow fadeInUp" data-wow-offset="150">
-				<h3 class="">@if($lang =='vi') {!! $about_video->content !!} @elseif($lang =='jp') {!! $about_video->content_en !!} @endif</h3>
+				<h3 class="">@if($lang =='vi') {!! @$about_video->content !!} @elseif($lang =='jp') {!! @$about_video->content_en !!} @endif</h3>
 			</div>
 			<div class="d-flex flex-wrap justify-content-center gal-wrap">
-				@foreach($gallery_home as $g)
-				<div class="pic-item wow fadeInUp" data-wow-offset="150"><a href="{{ asset('upload/hinhanh/'.$g->photo) }}" data-fancybox="pic1" data-caption="Xuất khẩu lao động" class=""><img src="{{ asset('upload/hinhanh/'.$g->photo) }}" alt=""></a></div>
+				@foreach($album_images as $k=>$g)
+				<div class="pic-item wow fadeInUp @if($k > 2) hidden @endif" data-wow-offset="150"><a href="{{ asset('upload/service/'.$g->photo) }}" data-fancybox="pic1" data-caption="Xuất khẩu lao động" class=""><img src="{{ asset('upload/service/'.$g->photo) }}" alt=""></a></div>
 				@endforeach
 			</div>
-			<div class="text-center wow fadeInUp" data-wow-offset="150"><a href="{{url('gallery')}}" title="" class="btn jbtn">もっと読む</a></div>
+			<div class="text-center wow fadeInUp" data-wow-offset="150"><a href="{{url('gallery')}}" title="" class="btn jbtn">{{trans('label.anh')}}</a></div>
 		</div>
 	</section>
 </main>

@@ -697,6 +697,7 @@ a:hover, .video-item:hover a, .blog-item:hover a {
 }
 .qt {
   padding: 80px 0px 30px;
+  margin-bottom: 20px;
 }
 .qt-sum {
   padding: 25px 0px 30px;
@@ -1258,6 +1259,10 @@ a:hover, .video-item:hover a, .blog-item:hover a {
   }
 }
 #at4-share{
+  display: none !important;
+}
+.hidden{
+  visibility: hidden !important;
   display: none !important;
 }
 @media (max-width: 575px) {}

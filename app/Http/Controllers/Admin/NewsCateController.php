@@ -93,6 +93,11 @@ class NewsCateController extends Controller {
 		} else {
 			$cate->status = 0;
 		}
+		if ($request->status_en == 'on') {
+			$cate->status_en = 1;
+		} else {
+			$cate->status_en = 0;
+		}
 		$cate->save();
 		return redirect('backend/newscate?type=' . $com)->with('status', 'Thêm mới thành công !');
 	}
@@ -203,7 +208,11 @@ class NewsCateController extends Controller {
 			} else {
 				$news_cate->status = 0;
 			}
-
+			if ($request->status_en == 'on') {
+				$news_cate->status_en = 1;
+			} else {
+				$news_cate->status_en = 0;
+			}
 			$news_cate->save();
 
 			return redirect('backend/newscate/edit?id=' . $id . '&type=' . $com)->with('status', 'Cập nhật thành công');
